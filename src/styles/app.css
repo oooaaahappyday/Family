@@ -1,5 +1,18 @@
-@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+@import url('../../node_modules/bootstrap/dist/css/bootstrap.min.css');
+@import url('../../node_modules/angular-sidebarjs/dist/angular-sidebarjs.min.css');
+
 .active {
     background-color: black;
     color: white;
+}
+
+/*SIDEBAR*/
+sidebarjs nav button{margin-bottom: 1rem;}
+.sidebar-close {
+	display: block;
+	padding: 2rem;
+}
+.sidebar-item {
+	display: block;
+	padding: 4rem;
 }
