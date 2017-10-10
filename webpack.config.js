@@ -32,14 +32,14 @@ module.exports = {
   // Configuration des loaders
   module: {
       rules: [
-        {
+        {//récupération des fichiers de type css
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: 'css-loader'
           })
         },
-        {
+        {//fix récupération font bootstrap
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         use: [
           {

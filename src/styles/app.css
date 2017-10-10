@@ -1,5 +1,10 @@
 @import url('../../node_modules/bootstrap/dist/css/bootstrap.min.css');
 @import url('../../node_modules/angular-sidebarjs/dist/angular-sidebarjs.min.css');
+@import url('../../node_modules/normalize.css/normalize.css');
+
+/*COMMON*/
+
+
 
 .active {
     background-color: black;
@@ -11,6 +16,7 @@ sidebarjs nav button{margin-bottom: 1rem;}
 .sidebar-close {
 	display: block;
 	padding: 2rem;
+	text-decoration: none;
 }
 .sidebar-item {
 	display: block;
