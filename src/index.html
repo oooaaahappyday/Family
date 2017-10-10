@@ -6,13 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
 </head>
 <body ng-app="myFamilyApp">
-		<nav>
-        <a ui-sref="home" ui-sref-active="active">home</a>
-        <a ui-sref="familles" ui-sref-active="active">Familles</a>
-        <a ui-sref="evenements" ui-sref-active="active">Evenements</a>
-        <a ui-sref="blog" ui-sref-active="active">Blog</a>
-        <a ui-sref="photos" ui-sref-active="active">Photos</a>
-    </nav>
-		<main ui-view></main>
+	<nav>
+      <a ui-sref="home" ui-sref-active="active">home</a>
+      <a ui-sref="familles" ui-sref-active="active">Familles</a>
+      <a ui-sref="evenements" ui-sref-active="active">Evenements</a>
+      <a ui-sref="blog" ui-sref-active="active">Blog</a>
+      <a ui-sref="photos" ui-sref-active="active">Photos</a>
+  </nav>
+	<main ui-view></main>
+	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
