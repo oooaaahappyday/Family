@@ -13,12 +13,21 @@
 
 /*SIDEBAR*/
 sidebarjs nav button{margin-bottom: 1rem;}
+.sidebar-open {
+	display: inline-block;
+	padding: 1.5rem;
+}
 .sidebar-close {
-	display: block;
-	padding: 2rem;
-	text-decoration: none;
+	display         : block;
+	padding         : 1.5rem;
+	background-color: #F6D258;
 }
 .sidebar-item {
-	display: block;
-	padding: 4rem;
+	display         : block;
+	padding         : 3rem;
+	background-color: #EF562D;
+	text-transform  : uppercase;
 }
+
+/*HOME*/
+.home-title {text-align: center;}

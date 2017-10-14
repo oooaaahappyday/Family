@@ -47,6 +47,21 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
             controller  : 'PhotosController',
             controllerAs: 'photos'
         })
+        .state({
+            name        : 'about',
+            url         : '/about',
+            templateUrl : 'src/about/about.view.html',
+            controller  : 'AboutController',
+            controllerAs: 'about'
+        })
+        .state({
+            name        : 'details',
+            url         : '/familles/details/:id',
+            templateUrl : 'src/familles/details/details.view.html',
+            controller  : 'DetailsController',
+            controllerAs: 'details'
+        })
+
 
     // Si aucune route n'est atteinte, on charge par defaut celle-ci
     $urlRouterProvider.otherwise('/')

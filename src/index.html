@@ -8,23 +8,24 @@
 <body ng-app="myFamilyApp">
 	<nav>
   </nav>
-
-	<button type="button" class="btn btn-primary" sidebarjs-toggle>Menu</button>
+		<div>
+			<img class="sidebar-open" src="src/img/icon/home.png" sidebarjs-toggle />
+		</div>
 
 	  <sidebarjs>
 	    <nav>
-	    	<div>
-					<img class="sidebar-close" src="src/img/icon/cancel.png" sidebarjs-toggle />
-				<a class="sidebar-item" ui-sref="home" ui-sref-active="active">home</a>
-				<a class="sidebar-item" ui-sref="familles" ui-sref-active="active">Familles</a>
-				<a class="sidebar-item" ui-sref="evenements" ui-sref-active="active">Evenements</a>
-				<a class="sidebar-item" ui-sref="blog" ui-sref-active="active">Blog</a>
-				<a class="sidebar-item" ui-sref="photos" ui-sref-active="active">Photos</a>
+	    	<div class="sidebar-close">
+					<img src="src/img/icon/cancel.png" sidebarjs-toggle />
+				</div>
+				<a class="sidebar-item" id="menu-home" ui-sref="home" ui-sref-active="active" sidebarjs-toggle>Home</a>
+				<a class="sidebar-item" id="menu-family" ui-sref="familles" ui-sref-active="active" sidebarjs-toggle>Familles</a>
+				<a class="sidebar-item" id="menu-events" ui-sref="evenements" ui-sref-active="active" sidebarjs-toggle>Rechercher</a>
+				<a class="sidebar-item" id="menu-blog" ui-sref="blog" ui-sref-active="active" sidebarjs-toggle>Trier</a>
+				<!-- <a class="sidebar-item" id="menu-pics" ui-sref="photos" ui-sref-active="active" sidebarjs-toggle>Photos</a> -->
+				<a class="sidebar-item" id="menu-about" ui-sref="about" ui-sref-active="active" sidebarjs-toggle>About</a>
 	    </nav>
 	  </sidebarjs>
 
-
 	<main ui-view></main>
-	<div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 </body>
 </html>
