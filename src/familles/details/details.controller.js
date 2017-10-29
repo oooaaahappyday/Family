@@ -5,8 +5,8 @@ function DetailsController($scope, $stateParams, FamilyService) {
 	details.sibling = {};
 	details.siblings = FamilyService.getSiblings();
 	details.sibling = FamilyService.getSiblingDetails(details.id);
-	console.log(details.id);
-	console.log(details.sibling.prenom);
+	// console.log(details.id);
+	// console.log(details.sibling.prenom);
 
 }
 

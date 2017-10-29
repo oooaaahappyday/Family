@@ -1,4 +1,4 @@
-function config($stateProvider, $locationProvider, $urlRouterProvider) {
+function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelegateProvider) {
     /*
         Supprime le préfixe "!" des URLs, présent par défaut dans Angular 1.6.* (voir http://stackoverflow.com/questions/41226122/url-hash-bang-prefix-instead-of-simple-hash-in-angular-1-6)
         Au lieu de qqch comme   http://localhost:8080/#!/home ,
@@ -6,6 +6,11 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
     */
 
     $locationProvider.hashPrefix('')
+    // Whitelisted url
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'self',
+        'http://www.mokih.fr/**'
+    ]);
 
     /**
      * Configuration des routes de l'application
@@ -27,32 +32,11 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
             controllerAs: 'familles'
         })
         .state({
-            name        : 'evenements',
-            url         : '/evenements',
-            templateUrl : 'src/evenements/evenements.view.html',
-            controller  : 'EvenementsController',
-            controllerAs: 'evenements'
-        })
-        .state({
-            name        : 'blog',
-            url         : '/blog',
-            templateUrl : 'src/blog/blog.view.html',
-            controller  : 'BlogController',
-            controllerAs: 'blog'
-        })
-        .state({
-            name        : 'photos',
-            url         : '/photos',
-            templateUrl : 'src/photos/photos.view.html',
-            controller  : 'PhotosController',
-            controllerAs: 'photos'
-        })
-        .state({
-            name        : 'about',
-            url         : '/about',
-            templateUrl : 'src/about/about.view.html',
-            controller  : 'AboutController',
-            controllerAs: 'about'
+            name        : 'member',
+            url         : '/member/:id',
+            templateUrl : 'src/member/member.view.html',
+            controller  : 'MemberController',
+            controllerAs: 'member'
         })
         .state({
             name        : 'details',
@@ -62,14 +46,12 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
             controllerAs: 'details'
         })
 
-
     // Si aucune route n'est atteinte, on charge par defaut celle-ci
     $urlRouterProvider.otherwise('/')
-
 }
 
 // Nomme explicitement les injections de dépendances (pour éviter les bugs lors de la minification)
-config.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider']
+config.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider','$sceDelegateProvider']
 
 // Export de la fonction de configuration
 export default config

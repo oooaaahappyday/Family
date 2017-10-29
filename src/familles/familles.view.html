@@ -1,14 +1,47 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<div ng-repeat="sibling in familles.siblings">
-				<a ui-sref="details({id: sibling.id})">
-					<div class="sibling">
-							<p>{{ sibling.prenom }}</p>
-							<p>{{ sibling.nom }}</p>
-							<p>----------X----------</p>
+			<!-- 
+				- Affichage formulaire nom prenom 
+				- liste déroulante si homonymes
+			-->
+			<div id="form">
+				<form>
+				  <div class="form-group">
+				    <label for="first-name">Prénom</label>
+				    <input type="text" ng-model="familles.member.prenom" class="form-control" id="first-name" aria-describedby="first-name" placeholder="Entrez un prénom">
+				    <small id="first-nameHelp" class="form-text text-muted">Le vôtre ou celui d'un membre de la famille.</small>
+				  </div>
+				  <!-- <button ng-click="familles.siblings()" type="submit" class="btn btn-primary">Submit siblings</button> -->
+				  <button ng-click="familles.memberList()" type="submit" class="btn btn-primary">Submit member</button>
+				</form>
+			</div>
+
+			<!-- Affichage noms user et ses freres et soeurs -->
+			<div class="message">
+				<p ng-bind="familles.message"></p>
+				<div class="member-list" ng-repeat="member in familles.memberswithname">
+					<a ui-sref="member({id: member.id})">
+						<div class="sibling" ng-cloak>
+							<p>{{ member.prenom }} {{ member.nom }}</p>
 						</div>
 					</a>
+				</div>
+			</div>
+			<div id="currentUser" ng-if="currentUser.lenght > 0">
+				<div ng-repeat="sibling in familles.siblings">
+					<a ui-sref="details({id: sibling.id})">
+						<div class="sibling" ng-cloak>
+							<p>{{ sibling.prenom }}</p>
+							<p>{{ sibling.nom }}</p>
+						</div>
+					</a>
+
+					<!-- Fleches navigation parents/enfants -->
+					<span class="parents-arrow" ng-click="familles.previousGeneration()"> <<< </span>
+					<p class="enfants-arrow" ng-if="sibling.enfants.length > 0" ng-click="familles.nextGeneration()"> >>> </p>
+					<p>----------X----------</p>
+				</div>
 			</div>
 		</div>
 	</div>
