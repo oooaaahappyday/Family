@@ -36,7 +36,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelega
             url         : '/member/:id',
             templateUrl : 'src/member/member.view.html',
             controller  : 'MemberController',
-            controllerAs: 'member'
+            controllerAs: 'member',
         })
         .state({
             name        : 'details',

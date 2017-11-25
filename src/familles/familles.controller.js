@@ -4,6 +4,7 @@ function FamillesController($scope, FamilyService, $http) {
 	familles.siblings        = {};
 	familles.member          = {};
 	familles.message         = "";
+	// console.log(familles.member.prenom);
 
 	familles.memberList = function(){
 		// reset message
@@ -23,28 +24,18 @@ function FamillesController($scope, FamilyService, $http) {
 				+prenom+' dans la famille.';
 			return familles.memberswithname;
 		});
-	};
 
-	familles.getMember = function(){
-		var prenom = familles.member.prenom;
-		FamilyService.getFamilyMember(prenom)
+	};
+	// au clic sur un nom de la liste
+	familles.getMember = function(id, pere, mere){
+		familles.member = {};
+		FamilyService.getFamilyMember(id, pere, mere)
 		.then(function (response) {
-        familles.member = response.data;
-        console.log(familles.member);
-        return familles.member;
+        familles.siblings = response.data;
+    console.log(familles.siblings);
+        return familles.siblings;
       }
     );
-    familles.member = {prenom : ""};
-    console.log(familles.member.prenom);
-	};
-
-	familles.siblings = function(){
-		console.log('siblings fired !');
-		FamilyService.getSiblings()
-		.then(function(response){
-      familles.siblings = response.data;
-			return familles.siblings;
-    });
 	};
 };
 

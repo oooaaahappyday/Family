@@ -11,20 +11,9 @@
 		  	return $http.get(url);
 		  };
 
-		  obj.getSiblings = function(){
-		  	var url = serviceBase + 'siblings';
-        return $http.get(url);
-      };
-
-		  obj.getFamilyMember = function(id){
-		  	var url = serviceBase + 'familyMember?id=' + id;
-		  	// var records = {};
+		  obj.getFamilyMember = function(id, pere, mere){
+		  	var url = serviceBase + 'familyMember?id=' + id +'&pere=' + pere + '&mere=' + mere;
 		  	return $http.get(url);
-	    	// return $http.jsonp(url)
-	    	// 	.then(function(data){
-		  		// 	console.log('toto');
-		  		// 	console.log(data.data.result.prenom);
-		  		// });
 		  };
 		return obj;
 		});
