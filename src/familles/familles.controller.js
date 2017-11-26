@@ -3,15 +3,15 @@ function FamillesController($scope, FamilyService, $http) {
 	familles.memberswithname = {};
 	familles.siblings        = {};
 	familles.member          = {};
+	familles.parents         = {};
+	familles.children        = {};
 	familles.message         = "";
-	// console.log(familles.member.prenom);
+	familles.appState				 = "";
 
 	familles.memberList = function(){
-		// reset message
 		familles.message = "";
-		// récupère prénom par formulaire
+		familles.siblings = {};
 		var prenom = familles.member.prenom;
-		// Appel au service pour récupérer la promesse, reponse de la bdd
 		FamilyService.getMembersWithFirstname(prenom)
 		.then(function(response){
 			familles.memberswithname = response.data;
@@ -24,18 +24,41 @@ function FamillesController($scope, FamilyService, $http) {
 				+prenom+' dans la famille.';
 			return familles.memberswithname;
 		});
-
 	};
 	// au clic sur un nom de la liste
 	familles.getMember = function(id, pere, mere){
+		// reset message
+		familles.message = "";
+		familles.memberswithname = {};
 		familles.member = {};
+		familles.appState				 = "siblings";
 		FamilyService.getFamilyMember(id, pere, mere)
 		.then(function (response) {
         familles.siblings = response.data;
-    console.log(familles.siblings);
+    		console.log(familles.siblings);
         return familles.siblings;
       }
     );
+	};
+
+	familles.getChildren = function(id){
+		familles.appState				 = "children";
+		FamilyService.getChildren(id)
+		.then(function (response) {
+			familles.children = response.data;
+			console.log(familles.children);
+			return familles.children;
+		});
+	};
+
+	familles.getParents = function(pere, mere){
+		familles.appState				 = "parents";
+		FamilyService.getParents(pere, mere)
+		.then(function (response) {
+			familles.parents = response.data;
+			console.log(familles.parents);
+			return familles.parents;
+		});
 	};
 };
 

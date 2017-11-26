@@ -15,6 +15,15 @@
 		  	var url = serviceBase + 'familyMember?id=' + id +'&pere=' + pere + '&mere=' + mere;
 		  	return $http.get(url);
 		  };
+
+		  obj.getChildren = function(id){
+		  	var url = serviceBase + 'children?id=' + id;
+		  	return $http.get(url);
+		  };
+		  obj.getParents = function(pere, mere){
+		  	var url = serviceBase + 'parents?pere=' + pere + '&mere=' + mere;
+		  	return $http.get(url);
+		  };
 		return obj;
 		});
 })();
