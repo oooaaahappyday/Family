@@ -24,6 +24,10 @@
 		  	var url = serviceBase + 'parents?pere=' + pere + '&mere=' + mere;
 		  	return $http.get(url);
 		  };
+		  obj.getDetails = function(id){
+		  	var url = serviceBase + 'details?id=' + id;
+		  	return $http.get(url);
+		  };
 		return obj;
 		});
 })();
