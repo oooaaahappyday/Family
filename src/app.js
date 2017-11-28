@@ -14,8 +14,6 @@ import familyService from './services/service.family.js'
 //Controllers
 import HomeController from './home/home.controller.js'
 import FamillesController from './familles/familles.controller.js'
-import MemberController from './member/member.controller.js'
-import DetailsController from './familles/details/details.controller.js'
 
 (function(){
 	"use strict";
@@ -24,6 +22,4 @@ import DetailsController from './familles/details/details.controller.js'
         .config(config)
         .controller('HomeController' , HomeController)
         .controller('FamillesController' , FamillesController)
-        .controller('MemberController' , MemberController)
-        .controller('DetailsController' , DetailsController)
 })();

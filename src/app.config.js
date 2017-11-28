@@ -31,20 +31,6 @@ function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelega
             controller  : 'FamillesController',
             controllerAs: 'familles'
         })
-        .state({
-            name        : 'member',
-            url         : '/member/:id',
-            templateUrl : 'src/member/member.view.html',
-            controller  : 'MemberController',
-            controllerAs: 'member',
-        })
-        .state({
-            name        : 'details',
-            url         : '/familles/details/:id',
-            templateUrl : 'src/familles/details/details.view.html',
-            controller  : 'DetailsController',
-            controllerAs: 'details'
-        })
 
     // Si aucune route n'est atteinte, on charge par defaut celle-ci
     $urlRouterProvider.otherwise('/')
