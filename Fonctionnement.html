@@ -1,0 +1,36 @@
+Fonctionnement:
+
+formulaire -> recherche personne par son prénom.
+=>getMemberList();
+	=> "familles.membersWithName" : liste des membres portant le prénom recherché
+			[prénom, nom]
+
+sélection de la personne recherchée.
+=>getMember();
+	=>triple tableau:
+		* la personne et ses frères et soeurs
+		* les enfants de la personne
+		* les parents de la personne
+
+affichage siblings
+
+3 choix:
+	1) clic sur personne
+	2) clic sur enfants
+	2) clic sur parents
+
+1 clic sur personne:
+=>getDetails();
+	->appState == details
+	->service getFamilyMember();
+		=>triple tableau:
+			* la personne
+			* les enfants de la personne
+			* les parents de la personne
+
+		Affichage infos sur state #details
+			-> bouton retour => getMember()
+			-> appState == siblings
+
+get enfants: test si enfants, si oui return array enfants
+si pas enfants, reviens sur l'individu dont on a passé les infos en param et retour a fratrie.
