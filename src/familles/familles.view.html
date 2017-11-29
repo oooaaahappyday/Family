@@ -19,7 +19,7 @@
 			</div>
 			<!-- Affichage liste des personnes trouvées -->
 			<div>
-				<div class="member-list" ng-repeat="member in familles.memberswithname">
+				<div class="member-list" ng-repeat="member in familles.membersWithName">
 					<!-- <a ui-sref="member({id: member.id})"> -->
 						<div ng-click="familles.getMember(member.id,member.pere, member.mere)" class="sibling" ng-cloak>
 							<p>{{ member.prenom }} {{ member.nom }}</p>
@@ -29,23 +29,23 @@
 			</div>
 
 			<!-- // PANEL SIBLINGS -->
-			<div class="siblings" ng-show="familles.appState == 'siblings'">
-				<div ng-repeat="sibling in familles.siblings">
+			<div id="siblings" ng-show="familles.appState == 'siblings'">
+				<div ng-repeat="sibling in familles.member.siblings">
 					<div class="sibling" ng-cloak>
 						<div ng-click="familles.getDetails(sibling.id, sibling.pere, sibling.mere)">
 							<p>{{ sibling.prenom }}</p>
 							<p>{{ sibling.nom }}</p>
 						</div>
 							<!-- Fleches navigation parents/enfants -->
-						<span class="parents-arrow" ng-click="familles.getParents(sibling.pere, sibling.mere)"> Parents <- </span>
-						<span class="enfants-arrow" ng-click="familles.getChildren(sibling.id)"> -> Enfants </span>
+						<span class="parents-arrow" ng-click="familles.getParents(sibling.id, sibling.pere, sibling.mere)"> Parents <- </span>
+						<span class="enfants-arrow" ng-click="familles.getChildren(sibling.id, sibling.pere, sibling.mere)"> -> Enfants </span>
 						<p>----------X----------</p>
 					</div>
 				</div>
 			</div>
 
 			<!-- // PANEL PARENTS -->
-			<div class="Parents" ng-show="familles.appState == 'parents'">
+			<div id="parents" ng-show="familles.appState == 'parents'">
 				<div ng-repeat="parent in familles.parents">
 					<div class="parent" ng-cloak>
 						<div ng-click="familles.getDetails(parent.id, parent.pere, parent.mere)">
@@ -53,15 +53,15 @@
 							<p>{{ parent.nom }}</p>
 						</div>
 							<!-- Fleches navigation parents/enfants -->
-						<span class="parents-arrow" ng-click="	familles.getParents(parent.pere, parent.mere)"> Parents <- </span>
-						<span class="enfants-arrow" ng-click="familles.getChildren(parent.id)"> -> Enfants </span>
+						<span class="parents-arrow" ng-click="familles.getParents(parent.id, parent.pere, parent.mere)"> Parents <- </span>
+						<span class="enfants-arrow" ng-click="familles.getChildren(parent.id, parent.pere, parent.mere)"> -> Enfants </span>
 						<p>----------X----------</p>
 					</div>
 				</div>
 			</div>
 
 			<!-- // PANEL CHILDREN -->
-			<div class="Children" ng-show="familles.appState == 'children'" ng-if="familles.children.length > 0">
+			<div id="children" ng-show="familles.appState == 'children'">
 				<div ng-repeat="child in familles.children">
 					<div class="children" ng-cloak>
 						<div ng-click="familles.getDetails(child.id, child.pere, child.mere)">
@@ -69,31 +69,33 @@
 							<p>{{ child.nom }}</p>
 						</div>
 							<!-- Fleches navigation children/enfants -->
-						<span class="children-arrow" ng-click="	familles.getParents(child.pere, child.mere)"> Parents <- </span>
-						<span class="enfants-arrow" ng-click="familles.getChildren(child.id)"> -> Enfants </span>
+						<span class="children-arrow" ng-click="familles.getParents(child.id, child.pere, child.mere)"> Parents <- </span>
+						<span class="enfants-arrow" ng-click="familles.getChildren(child.id, child.pere, child.mere)"> -> Enfants </span>
 						<p>----------X----------</p>
 					</div>
 				</div>
 			</div>
 
 			<!-- // PANEL DETAILS -->
-			<div class="details" ng-show="familles.appState == 'details'">
+			<div id="details" ng-show="familles.appState == 'details'">
 				<div class="container-fluid" ng-cloak>
+					<div class="back">
+						<a ng-click="familles.getMember(familles.details.member.id,familles.details.member.pere,familles.details.member.mere)">Retour</a>
+					</div>
 						<h3>{{ familles.details.member.prenom }}</h3>
 						<h4>{{ familles.details.member.nom }}</h4>
 					<p>Date de naissance : {{ familles.details.member.naissance }}</p>
 					<p>Téléphone : {{ familles.details.member.telephone }}</p>
 					<p>E-mail : {{ familles.details.member.email }}</p>
 					<p>Addresse : {{ familles.details.member.adresse }}</p>
-					<p>Dad : {{ familles.details.parents.pere.prenom }} {{ familles.details.parents.pere.nom }}</p>
-					<p>Mum : {{ familles.details.parents.mere.prenom }} {{ familles.details.parents.mere.nom }}</p>
+					<div ng-if="familles.details.parents.length > 0" class="parents">
+						<p>Dad : {{ familles.details.parents.pere.prenom }} {{ familles.details.parents.pere.nom }}</p>
+						<p>Mum : {{ familles.details.parents.mere.prenom }} {{ familles.details.parents.mere.nom }}</p>
+					</div>
 					<h4>Enfants :</h4>
 					<div class="enfants" ng-repeat="kid in familles.details.children">
 						<p>{{ kid.prenom }} {{ kid.nom }}</p>
 						<p>**********</p>
-					</div>
-					<div>
-						<a ng-click="familles.getMember(familles.details.member.id,familles.details.member.pere,familles.details.member.mere)">Retour</a>
 					</div>
 				</div>
 			</div>

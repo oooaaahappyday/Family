@@ -12,7 +12,7 @@
 }
 
 /*SIDEBAR*/
-sidebarjs nav button{margin-bottom: 1rem;}
+.sidebarjs nav button{margin-bottom: 1rem;}
 .sidebar-open {
 	display: inline-block;
 	padding: 1.5rem;
@@ -29,8 +29,22 @@ sidebarjs nav button{margin-bottom: 1rem;}
 	text-transform  : uppercase;
 }
 
+
+.sibling,
+.parents,
+.children,
+.details { text-align: center; }
 /*HOME*/
 .home-title {text-align: center;}
 
+/*SIBLINGS*/
+#sibling {text-align: center;}
+
 /*FAMILLE*/
-.sibling {text-align: center;}
+#parents {text-align: center;}
+
+/*CHILDREN*/
+#children {text-align: center;}
+
+/*DETAILS*/
+#details {text-align: center;}
