@@ -35,7 +35,7 @@ function FamillesController($scope, FamilyService, $http) {
 		familles.appState = "siblings";
 		// info membre sans parents enregistrés
 		if (id && (!pere || !mere)) {
-			console.log('hey!');
+			console.log('hey! member sans parents.');
 			FamilyService.getDetailsNoParents(id)
 			.then(function (response) {
 				familles.member = {
@@ -47,6 +47,7 @@ function FamillesController($scope, FamilyService, $http) {
 			});
 			// infos membre
 		} else {
+			console.log('hey! member avec parents.');
 			FamilyService.getFamilyMember(id, pere, mere)
 			.then(function (response) {
 				familles.member= {
@@ -54,8 +55,6 @@ function FamillesController($scope, FamilyService, $http) {
 					'children': response.data[1],
 					'parents' : response.data[2]
 				};
-				console.log('familles.member : ')
-				console.log(familles.member);
 	      return familles.member;
     	});
 		}
@@ -96,7 +95,7 @@ function FamillesController($scope, FamilyService, $http) {
 				//Cas pas de parents enregistrés
 			} else if (id && (!pere || !mere)) {
 				alert("Pas de parents enregistrés !");
-				console.log('hey Là!');
+				console.log('hey Là! Pas de parents.');
 				familles.appState = "siblings";
 				FamilyService.getDetailsNoParents(id)
 				.then(function (response) {
@@ -104,7 +103,6 @@ function FamillesController($scope, FamilyService, $http) {
 						'siblings': response.data[0],
 						'children': response.data[1]
 					};
-					console.log(familles.member);
 					return familles.member;
 				});
 			} else {
@@ -129,21 +127,34 @@ function FamillesController($scope, FamilyService, $http) {
 		familles.details = {};
 		familles.message = "";
 		familles.appState = "details";
-		FamilyService.getFamilyMember(id, pere, mere)
-		.then(function (response) {
-      familles.member = response.data[0];
-      familles.children = response.data[1];
-      familles.parents = {
-      	"pere":response.data[2][0],
-      	"mere":response.data[2][1],
-      };
-      familles.details = {
-      'member': familles.member[0],
-      'children': familles.children,
-      'parents' : familles.parents
-      };
-      return familles.details;
-    });
+			// info membre sans parents enregistrés
+			if (id && (!pere || !mere)) {
+				console.log('hey! Détails sans parents.');
+				FamilyService.getDetailsNoParents(id)
+				.then(function (response) {
+					//récupère membre + enfants
+					familles.details = {
+						'member'  : response.data[0][0],
+						'children': response.data[1]
+					};
+					return familles.details;
+				});
+			} else {
+				console.log('hey! Détails avec parents.');
+				FamilyService.getFamilyMember(id, pere, mere)
+				.then(function (response) {
+		     	// cf API
+		      familles.details = {
+		      	'member'  : response.data[0][0],
+		      	'children': response.data[1],
+		      	'parents' : {
+		      		"pere":response.data[2][0],
+			      	"mere":response.data[2][1]
+			      }
+			    };
+	      return familles.details;
+	    });
+    }
 	};
 };
 
