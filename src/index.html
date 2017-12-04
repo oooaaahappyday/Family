@@ -6,26 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
 </head>
 <body ng-app="myFamilyApp">
-	<nav>
-  </nav>
-		<div>
-			<img class="sidebar-open" src="src/img/icon/home.png" sidebarjs-toggle />
-		</div>
+	<div>
+		<img class="sidebar-open" src="src/img/icon/home.png" sidebarjs-toggle />
+	</div>
 
-	  <sidebarjs>
-	    <nav>
-	    	<div class="sidebar-close">
-					<img src="src/img/icon/cancel.png" sidebarjs-toggle />
-				</div>
-				<a class="sidebar-item" id="menu-home" ui-sref="home" ui-sref-active="active" sidebarjs-toggle>Home</a>
-				<a class="sidebar-item" id="menu-family" ui-sref="familles" ui-sref-active="active" sidebarjs-toggle>Familles</a>
-				<a class="sidebar-item" id="menu-events" ui-sref="evenements" ui-sref-active="active" sidebarjs-toggle>Rechercher</a>
-				<a class="sidebar-item" id="menu-blog" ui-sref="blog" ui-sref-active="active" sidebarjs-toggle>Trier</a>
-				<!-- <a class="sidebar-item" id="menu-pics" ui-sref="photos" ui-sref-active="active" sidebarjs-toggle>Photos</a> -->
-				<a class="sidebar-item" id="menu-about" ui-sref="about" ui-sref-active="active" sidebarjs-toggle>About</a>
-	    </nav>
-	  </sidebarjs>
+  <sidebarjs>
+    <nav>
+    	<div class="sidebar-close">
+				<img src="src/img/icon/cancel.png" sidebarjs-toggle />
+			</div>
+			<a class="sidebar-item" id="menu-home" ui-sref="home" ui-sref-active="active" sidebarjs-toggle>Home</a>
+			<a class="sidebar-item" id="menu-family" ui-sref="familles" ui-sref-active="active" sidebarjs-toggle>Familles</a>
+			<a class="sidebar-item" id="menu-login" ui-sref="login" ui-sref-active="active" sidebarjs-toggle>Login</a>
+    </nav>
+  </sidebarjs>
 
 	<main ui-view></main>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+<script src="src/firebase.config.js"></script>
 </body>
 </html>

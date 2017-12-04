@@ -25,6 +25,13 @@ function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelega
             controllerAs: 'home'
         })
         .state({
+            name        : 'login',
+            url         : '/login',
+            templateUrl : 'src/login/login.view.html',
+            controller  : 'LoginController',
+            controllerAs: 'login'
+        })
+        .state({
             name        : 'familles',
             url         : '/familles',
             templateUrl : 'src/familles/familles.view.html',
