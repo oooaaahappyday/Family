@@ -1,7 +1,45 @@
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<h1>{{ member.indiv.prenom }} {{ member.indiv.nom }}</h1>
-		</div>
+	<h1>Work in progress...</h1>
+	<div class="member-flex-container">
+		<form name="memberForm" action="memberForm.$valid && member.newMember()" novalidate>
+			<div class="form-group">
+			  <label for="first-name">Prénom : </label>
+			  <input type="text" ng-model="member.newMember.prenom" class="form-control" id="first-name" aria-describedby="first-name" autocomplete="off" >
+			</div>
+			<div class="form-group">
+			  <label for="first-name">Nom : </label>
+			  <input type="text" ng-model="member.newMember.nom" class="form-control" id="last-name" aria-describedby="last-name" autocomplete="off" >
+			</div>
+			<div class="form-group">
+			  <label for="first-name">Naissance : </label>
+			  <input type="text" ng-model="member.newMember.date" class="form-control" id="naissance" aria-describedby="naissance" autocomplete="off" >
+			</div>
+			<div class="form-group">
+			  <label for="first-name">Téléphone : </label>
+			  <input type="text" ng-model="member.newMember.tel" class="form-control" id="tel" aria-describedby="tel" autocomplete="off" >
+			</div>
+			<div class="form-group">
+			  <label for="first-name">E-mail : </label>
+			  <input type="text" ng-model="member.newMember.email" class="form-control" id="email" aria-describedby="email" autocomplete="off" >
+			</div>
+			<div class="form-group">
+			  <label for="first-name">Mère : </label>
+			  <select name="repeatSelectMeres" id="repeatSelectMeres" ng-model="member.newMember.meres">
+	        <option ng-repeat="option in member.newMember.meres" value="{{option.id}}">{{option.name}}</option>
+	      </select>
+	    </div>
+	    <div class="form-group">
+			  <label for="first-name">Père : </label>
+			  <select name="repeatSelectPeres" id="repeatSelectPeres" ng-model="member.newMember.peres">
+	        <option ng-repeat="option in member.newMember.peres" value="{{option.id}}">{{option.name}}</option>
+	      </select>
+	    </div>
+	    <div class="form-group">
+        <label for="myFileField">Sélectionnez une photo: </label>
+        <input type="file" demo-file-model="myFile"  class="form-control" id ="myFileField"/>
+        <button ng-click="uploadFile()" class = "btn btn-primary">Upload photo</button>
+      </div>
+      <input ng-click="member.newMember()" type="submit" value="Enregistrer" class="button-search"></input>
+		</form>
 	</div>
 </div>

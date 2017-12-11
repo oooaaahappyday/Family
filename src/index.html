@@ -4,25 +4,43 @@
 	<title>Family</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+	<script src="https://use.fontawesome.com/bb2973423e.js"></script>
 </head>
 <body ng-app="myFamilyApp">
-	<div>
-		<img class="sidebar-open" src="src/img/icon/home.png" sidebarjs-toggle />
-	</div>
+	<div class="menu-icon sidebar-open" sidebarjs-toggle ng-cloak>
+    <span></span>
+  </div>
 
+<!-- Menu -->
   <sidebarjs>
     <nav>
     	<div class="sidebar-close">
-				<img src="src/img/icon/cancel.png" sidebarjs-toggle />
+				<img src="src/img/icon/cancel.png" sidebarjs-toggle alt="logo menu" />
 			</div>
 			<a class="sidebar-item" id="menu-home" ui-sref="home" ui-sref-active="active" sidebarjs-toggle>Home</a>
 			<a class="sidebar-item" id="menu-family" ui-sref="familles" ui-sref-active="active" sidebarjs-toggle>Familles</a>
-			<a class="sidebar-item" id="menu-login" ui-sref="login" ui-sref-active="active" sidebarjs-toggle>Login</a>
+
+			<a class="sidebar-item" id="menu-login" ui-sref="user" ui-sref-active="active" sidebarjs-toggle>Connexion</a>
+			<a onclick="logout();" class="sidebar-item" id="menu-logout" ui-sref="home" ui-sref-active="active" sidebarjs-toggle>Deconnexion</a>
+			<a class="sidebar-item" id="menu-newMember" ui-sref="member" ui-sref-active="active">Ajouter une personne</a>
     </nav>
   </sidebarjs>
 
+<!-- Affichage des differents states -->
 	<main ui-view></main>
+
+<!-- Scripts -->
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
 <script src="src/firebase.config.js"></script>
+<script>
+	var message = "";
+	var logout = function(){
+	  	firebase.auth().signOut().then(function() {
+	  	}).catch(function(error) {
+	  	  message = error.message;
+	  	});
+	  };
+</script>
 </body>
 </html>

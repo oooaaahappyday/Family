@@ -1,0 +1,4 @@
+AuthName "Page FAMILLE protégée"
+AuthType Basic
+AuthUserFile "/home/mokihfrinh/www/family/src/familles/.htpasswd"
+Require valid-user

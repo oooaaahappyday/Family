@@ -22,21 +22,43 @@ function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelega
             url         : '/',
             templateUrl : 'src/home/home.view.html',
             controller  : 'HomeController',
-            controllerAs: 'home'
+            controllerAs: 'home',
+            resolve     : {
+              "currentAuth": ["Auth", function(Auth) {
+                return Auth.$waitForSignIn();
+              }]
+            }
         })
         .state({
-            name        : 'login',
-            url         : '/login',
-            templateUrl : 'src/login/login.view.html',
-            controller  : 'LoginController',
-            controllerAs: 'login'
+            name        : 'user',
+            url         : '/user',
+            templateUrl : 'src/user/user.view.html',
+            controller  : 'UserController',
+            controllerAs: 'user'
         })
         .state({
             name        : 'familles',
             url         : '/familles',
             templateUrl : 'src/familles/familles.view.html',
             controller  : 'FamillesController',
-            controllerAs: 'familles'
+            controllerAs: 'familles',
+            resolve     : {
+              "currentAuth": ["Auth", function(Auth) {
+                return Auth.$requireSignIn();
+              }]
+            }
+        })
+        .state({
+            name        : 'member',
+            url         : '/member',
+            templateUrl : 'src/member/member.view.html',
+            controller  : 'MemberController',
+            controllerAs: 'member',
+            resolve     : {
+              "currentAuth": ["Auth", function(Auth) {
+                return Auth.$requireSignIn();
+              }]
+            }
         })
 
     // Si aucune route n'est atteinte, on charge par defaut celle-ci
