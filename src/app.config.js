@@ -21,13 +21,6 @@ function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelega
           controllerAs: 'home'
         })
         .state({
-          name        : 'user',
-          url         : '/user',
-          templateUrl : 'src/user/user.view.html',
-          controller  : 'UserController',
-          controllerAs: 'user'
-        })
-        .state({
           name        : 'familles',
           url         : '/familles',
           templateUrl : 'src/familles/familles.view.html',
@@ -35,20 +28,17 @@ function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelega
           controllerAs: 'familles'
         })
         .state({
-            name        : 'member',
-            url         : '/member/:memberID',
-            templateUrl : 'src/member/member.view.html',
-            controller  : 'MemberController',
-            controllerAs: 'member',
-            resolve: {
-              member: function(FamilyService, $stateParams){
-                var memberID = $stateParams.memberID;
-                console.log(memberID);
-                var test = FamilyService.getMember(memberID);
-                console.log(test);
-                return FamilyService.getMember(memberID);
-              }
+          name        : 'member',
+          url         : '/member/:memberID',
+          templateUrl : 'src/member/member.view.html',
+          controller  : 'MemberController',
+          controllerAs: 'member',
+          resolve: {
+            member: function(FamilyService, $stateParams){
+              var memberID = $stateParams.memberID;
+              return FamilyService.getMember(memberID);
             }
+          }
         })
 
     // Si aucune route n'est atteinte, on charge par defaut celle-ci
