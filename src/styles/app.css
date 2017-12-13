@@ -18,10 +18,21 @@ h2 {font-size: 4rem;}
 h3 {font-size: 3.5rem;}
 h4 {font-size: 3rem;}
 
+h3, h4 {font-weight: bold;}
+
 p, span {
 	margin   : 0;
 	font-size: 2.5rem;
 }
+a,
+.button-search,
+.user-item,
+.parents-arrow,
+.children-arrow,
+.back,
+.menu-icon,
+.sidebar-open,
+.sidebar-close {cursor: pointer;}
 a, span {text-decoration: none!important;}
 
 input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
