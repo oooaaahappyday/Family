@@ -1,12 +1,8 @@
 function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelegateProvider) {
-    /*
-        Supprime le préfixe "!" des URLs, présent par défaut dans Angular 1.6.* (voir http://stackoverflow.com/questions/41226122/url-hash-bang-prefix-instead-of-simple-hash-in-angular-1-6)
-        Au lieu de qqch comme   http://localhost:8080/#!/home ,
-        on aurait plutôt  http://localhost:8080/#/home (ce qui est plus propre)
-    */
-
+    //Supprime le préfixe "!" des URLs
     $locationProvider.hashPrefix('')
-    // Whitelisted url
+
+    // Urls de confiance
     $sceDelegateProvider.resourceUrlWhitelist([
         'self',
         'http://www.mokih.fr/**'
@@ -18,47 +14,55 @@ function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelega
 
     $stateProvider
         .state({
-            name        : 'home',
-            url         : '/',
-            templateUrl : 'src/home/home.view.html',
-            controller  : 'HomeController',
-            controllerAs: 'home',
-            resolve     : {
-              "currentAuth": ["Auth", function(Auth) {
-                return Auth.$waitForSignIn();
-              }]
-            }
+          name        : 'home',
+          url         : '/',
+          templateUrl : 'src/home/home.view.html',
+          controller  : 'HomeController',
+          controllerAs: 'home'
         })
         .state({
-            name        : 'user',
-            url         : '/user',
-            templateUrl : 'src/user/user.view.html',
-            controller  : 'UserController',
-            controllerAs: 'user'
+          name        : 'user',
+          url         : '/user',
+          templateUrl : 'src/user/user.view.html',
+          controller  : 'UserController',
+          controllerAs: 'user'
         })
         .state({
-            name        : 'familles',
-            url         : '/familles',
-            templateUrl : 'src/familles/familles.view.html',
-            controller  : 'FamillesController',
-            controllerAs: 'familles',
-            resolve     : {
-              "currentAuth": ["Auth", function(Auth) {
-                return Auth.$requireSignIn();
-              }]
-            }
+          name        : 'familles',
+          url         : '/familles',
+          templateUrl : 'src/familles/familles.view.html',
+          controller  : 'FamillesController',
+          controllerAs: 'familles'
         })
         .state({
             name        : 'member',
-            url         : '/member',
+            url         : '/member/:memberID',
             templateUrl : 'src/member/member.view.html',
             controller  : 'MemberController',
             controllerAs: 'member',
-            resolve     : {
-              "currentAuth": ["Auth", function(Auth) {
-                return Auth.$requireSignIn();
-              }]
+            resolve: {
+              member: function(FamilyService, $stateParams){
+                var memberID = $stateParams.memberID;
+                console.log(memberID);
+                var test = FamilyService.getMember(memberID);
+                console.log(test);
+                return FamilyService.getMember(memberID);
+              }
             }
+        })
+        .state({
+            name        : 'login',
+            url         : '/login',
+            templateUrl : 'src/login/login.view.html',
+            controller  : 'LoginController',
+            controllerAs: 'login'
+        })
+        .state({
+            name        : 'logout',
+            url         : '/logout',
+            templateUrl : 'src/login/login.view.html',
+            controller  : 'LogoutController',
+            controllerAs: 'logout'
         })
 
     // Si aucune route n'est atteinte, on charge par defaut celle-ci

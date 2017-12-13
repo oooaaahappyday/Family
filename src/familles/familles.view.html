@@ -32,7 +32,7 @@
 				<div ng-repeat="sibling in familles.member.siblings">
 					<div class="sibling-container user-item" ng-cloak>
 						<div ng-click="familles.getDetails(sibling.id, sibling.pere, sibling.mere)">
-							<p class="capitalize name">{{ sibling.prenom }} {{ sibling.nom }}</p>
+							<p class="capitalize name">{{ sibling.prenom }} {{ sibling.nom }} <i class="fa fa-id-card-o" aria-hidden="true"></i></p>
 						</div>
 							<!-- Fleches navigation parents/enfants -->
 						<span class="parents-arrow" ng-click="familles.getParents(sibling.id, sibling.pere, sibling.mere)"> Parents <i class="fa fa-chevron-circle-left" aria-hidden="true"></i></span>
@@ -46,7 +46,7 @@
 				<div ng-repeat="parent in familles.parents">
 					<div class="parents-container user-item" ng-cloak>
 						<div ng-click="familles.getDetails(parent.id, parent.pere, parent.mere)">
-							<p  class="capitalize name">{{ parent.prenom }} {{ parent.nom }}</p>
+							<p  class="capitalize name">{{ parent.prenom }} {{ parent.nom }} <i class="fa fa-id-card-o" aria-hidden="true"></i></p>
 						</div>
 							<!-- Fleches navigation parents/enfants -->
 						<span class="parents-arrow" ng-click="familles.getParents(parent.id, parent.pere, parent.mere)"> Parents <i class="fa fa-chevron-circle-left" aria-hidden="true"></i></span>
@@ -60,7 +60,7 @@
 				<div ng-repeat="child in familles.children">
 					<div class="children-container user-item" ng-cloak>
 						<div ng-click="familles.getDetails(child.id, child.pere, child.mere)">
-							<p  class="capitalize name">{{ child.prenom }} {{ child.nom }}</p>
+							<p  class="capitalize name">{{ child.prenom }} {{ child.nom }} <i class="fa fa-id-card-o" aria-hidden="true"></i></p>
 						</div>
 							<!-- Fleches navigation children/enfants -->
 						<span class="parents-arrow" ng-click="familles.getParents(child.id, child.pere, child.mere)"> Parents <i class="fa fa-chevron-circle-left" aria-hidden="true"></i></span>

@@ -1,18 +1,10 @@
-function FamillesController($scope, $state, FamilyService, $http, currentAuth, $location, $sanitize ) {
+function FamillesController($scope, $state, FamilyService, $http, $location, $sanitize ) {
 	const familles  	 = this;
 	$scope.logged 		 = false;
 	$scope.formVisible = true;
 
 	String.prototype.ucfirst = function() {
 	    return this.charAt(0).toUpperCase() + this.substr(1);
-	}
-
-	familles.user = firebase.auth().currentUser;
-	if (familles.user) {
-	  $scope.logged = true;
-	  console.log(familles.user);
-	} else {
-		$state.go('login');
 	}
 
 	familles.appState				 = "";

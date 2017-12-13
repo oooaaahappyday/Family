@@ -7,18 +7,18 @@ html {height: 100vh;}
 body {
 	height          : 100%;
 	background-color: #9fa8a3;
-	font-size       : 2rem;
+	font-size       : 3rem;
 	font-family     : 'Dancing Script', cursive, "arial", sans-serif;
 }
 
 
 h1 {font-size: 3.5rem;}
-h2 {font-size: 3rem;}
-h3 {font-size: 2.5rem;}
-h4 {font-size: 2.2rem;}
+h2 {font-size: 4rem;}
+h3 {font-size: 3.5rem;}
+h4 {font-size: 3rem;}
 p, span {
 	margin   : 0;
-	font-size: 2rem;
+	font-size: 2.5rem;
 }
 a, span {text-decoration: none!important;}
 input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
@@ -117,6 +117,10 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 	padding      : 20px 0;
 }
 .form-group { max-width: 400px; }
+.form-control {
+	height   : 50px;
+	font-size:2.8rem;
+}
 
 .button-search {
 	padding                  : 5px 20px;
@@ -191,7 +195,7 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 
 .name {
 	margin-bottom: 10px;
-	font-size    : 2rem;
+	font-size    : 3rem;
 }
 .user-list-name p { padding: 15px 0; }
 
@@ -294,7 +298,8 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 #details .sibling { background-color: #95fff9; }
 
 
-@media all and (min-width: 425px) and (max-width: 768px) {
+@media all and (min-width: 425px) {
+	.back { padding: 10px 0 10px 105px; }
 }
 
 @media all and (min-width: 768px) {

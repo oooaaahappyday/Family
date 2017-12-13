@@ -1,4 +1,4 @@
 AuthName "Page FAMILLE protégée"
 AuthType Basic
-AuthUserFile "/home/mokihfrinh/www/family/src/familles/.htpasswd"
+AuthUserFile "\wamp64\www\private\.htpasswd"
 Require valid-user

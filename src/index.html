@@ -19,28 +19,17 @@
 				<img src="src/img/icon/cancel.png" sidebarjs-toggle alt="logo menu" />
 			</div>
 			<a class="sidebar-item" id="menu-home" ui-sref="home" ui-sref-active="active" sidebarjs-toggle>Home</a>
-			<a class="sidebar-item" id="menu-family" ui-sref="familles" ui-sref-active="active" sidebarjs-toggle>Familles</a>
+			<a class="sidebar-item" id="menu-family" ui-sref="familles" ui-sref-active="active" sidebarjs-toggle>Famille</a>
+			<a class="sidebar-item" id="menu-newMember" ui-sref='member({memberID: "0"})' ui-sref-active="active" sidebarjs-toggle>Ajouter une personne</a>
 
-			<a class="sidebar-item" id="menu-login" ui-sref="user" ui-sref-active="active" sidebarjs-toggle>Connexion</a>
-			<a onclick="logout();" class="sidebar-item" id="menu-logout" ui-sref="home" ui-sref-active="active" sidebarjs-toggle>Deconnexion</a>
-			<a class="sidebar-item" id="menu-newMember" ui-sref="member" ui-sref-active="active">Ajouter une personne</a>
+			<!-- <a class="sidebar-item" id="menu-login" ui-sref="user" ui-sref-active="active" sidebarjs-toggle>Connexion</a>
+			<a onclick="logout();" class="sidebar-item" id="menu-logout" ui-sref="home" ui-sref-active="active" sidebarjs-toggle>Deconnexion</a> -->
     </nav>
   </sidebarjs>
 
 <!-- Affichage des differents states -->
 	<main ui-view></main>
 
-<!-- Scripts -->
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
-<script src="src/firebase.config.js"></script>
-<script>
-	var message = "";
-	var logout = function(){
-	  	firebase.auth().signOut().then(function() {
-	  	}).catch(function(error) {
-	  	  message = error.message;
-	  	});
-	  };
-</script>
 </body>
+<toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
 </html>
