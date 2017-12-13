@@ -6,21 +6,24 @@
 html {height: 100vh;}
 body {
 	height          : 100%;
-	background-color: #9fa8a3;
+	background: rgba(0,0,0,.5) url(../img/tree.svg)no-repeat 100% 100%;
 	font-size       : 3rem;
 	font-family     : 'Dancing Script', cursive, "arial", sans-serif;
+	color           : #030303;
 }
 
 
-h1 {font-size: 3.5rem;}
+h1 {font-size: 6rem;}
 h2 {font-size: 4rem;}
 h3 {font-size: 3.5rem;}
 h4 {font-size: 3rem;}
+
 p, span {
 	margin   : 0;
 	font-size: 2.5rem;
 }
 a, span {text-decoration: none!important;}
+
 input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 
 .capitalize {text-transform: capitalize;}
@@ -49,9 +52,9 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 	-ms-transform     : translateX(-50%) translateY(-50%);
 	transform         : translateX(-50%) translateY(-50%);
 	display           : block;
-	width             : 22px;
-	height            : 2px;
-	background-color  : #FFF;
+	width             : 34px;
+	height            : 6px;
+	background-color  : #0e95c6;
 	-webkit-transition: background 0.5s;
 	-o-transition     : background 0.5s;
 	transition        : background 0.5s;
@@ -61,24 +64,28 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 	position          : absolute;
 	top               : 0;
 	left              : 0;
-	-webkit-transform : translateY(-6px);
-	-ms-transform     : translateY(-6px);
-	transform         : translateY(-6px);
+	-webkit-transform : translateY(-12px);
+	-ms-transform     : translateY(-12px);
+	transform         : translateY(-12px);
 	display           : block;
-	width             : 22px;
-	height            : 2px;
-	background-color  : #FFF;
+	width             : 34px;
+	height            : 6px;
+	background-color  : #0e95c6;
 	-webkit-transition: -webkit-transform 0.5s;
 	transition        : -webkit-transform 0.5s;
 	-o-transition     : transform 0.5s;
 	transition        : transform 0.5s;
 	transition        : transform 0.5s, -webkit-transform 0.5s;
 }
-.menu-icon span::after { -webkit-transform: translateY(6px); -ms-transform: translateY(6px); transform: translateY(6px); }
+.menu-icon span::after { 
+	-webkit-transform: translateY(12px);
+	-ms-transform: translateY(12px);
+	transform: translateY(12px);
+}
 
 
 /*SIDEBAR*/
-.sidebarjs--is-visible > div {background-color: #e3e0cf;}
+.sidebarjs--is-visible > div {background-color: #7f7f7f;}
 .sidebarjs nav button{margin-bottom: 1rem;}
 .sidebar-open {
 	display: inline-block;
@@ -87,17 +94,17 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 .sidebar-close {
 	display         : block;
 	padding         : 1.5rem;
-	background-color: #e3e0cf;
+	background-color: #0e95c6;
 }
 .sidebar-item {
 	display         : block;
 	padding         : 1.5rem 0 1.5rem 1rem;
-	background-color: #c5d5cb;
-	text-transform  : capitalize;
-	color           : #4c3622;
+	background-color: #c6e0a7;
+	color           : #030303;
 	font-size       : 3.5rem;
 }
 
+.home-title,
 .sibling-container,
 .parents-container,
 .children-container,
@@ -118,25 +125,34 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 }
 .form-group { max-width: 400px; }
 .form-control {
-	height   : 50px;
-	font-size:2.8rem;
+	height          : 50px;
+	background-color: #c6e0a7;
+	font-size       : 2.8rem;
+	color           : #0e95c6;
 }
 
+/*Bouton d'acces au formulaire de recherche*/
 .button-search {
 	padding                  : 5px 20px;
-	border                   : 1px solid #4c3622;
+	border                   : 1px solid #030303;
 	border-top-right-radius  : 10px;
 	border-bottom-left-radius: 10px;
 	font-weight              : bold;
-	color                    : #4c3622;
-	background-color         : #e3e0cf;
+	color                    : #030303;
+	background-color         : #c6e0a7;
+}
+	.button-search.home {
+		display   : inline-block;
+		max-width : 280px;
+		margin-top: 60px;
+		padding   : 5px 15px;
 }
 
-/*HOME*/
-.home-title {text-align: center;}
 
 /*PANNELS*/
-.pannels {position: relative;}
+.pannels { position: relative; }
+
+.list-title { max-width: 400px; }.list-title { max-width: 400px; }
 
 /*Boutons vers parents/enfants*/
 .parents-arrow,
@@ -157,10 +173,12 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 	max-width       : 400px;
 	margin-bottom   : 10px;
 	padding         : 10px 0;
-	background-color: #e3e0cf;
-	color           : #000;
+	background-color: #c6e0a7;
+	color           : #030303;
 	font-size       : 1.9rem;
 }
+.fa-id-card-o { color: #0e95c6; }
+.fa-backward { color: #c6e0a7;}
 
 .user-flex-container,
 .familles-flex-container {
@@ -176,7 +194,7 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 	margin               : auto;
 	padding-left         : 20px;
 	padding-bottom       : 40px;
-	border-left          : 1px solid #4c3622;
+	border-left          : 1px solid #0e95c6;
 	height               : 70vh;
 }
 
@@ -215,12 +233,14 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 	opacity:0;
 }
 
+
 /*DETAILS*/
 /*Bouton retour*/
 .back { padding: 10px 0; }
 .back a {
-		color  : #4c3622;
-		padding: 10px;
+	padding    : 10px;
+	color      : #030303;
+	font-weight: bold;
 }
 
 /*Photo identite*/
@@ -258,7 +278,11 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 	margin: auto;
 }
 
-#details {margin-top: -50px;}
+#details {
+	margin-top            : -50px;
+	border-top-left-radius: 40px;
+	background-color      : rgba(14,149,198, .6);
+}
 .details-flex-container {
 	display              : -webkit-box;
 	display              : -ms-flexbox;
@@ -293,9 +317,9 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 	border-top-right-radius  : 10px;
 	border-bottom-left-radius: 10px;
 }
-#details .child { background-color: #00fff1; }
-#details .parent { background-color: #a6e4e1; }
+#details .parent,
 #details .sibling { background-color: #95fff9; }
+#details .child { background-color: #00fff1; }
 
 
 @media all and (min-width: 425px) {
@@ -303,6 +327,10 @@ input {font-family: 'Dancing Script', cursive, "arial", sans-serif;}
 }
 
 @media all and (min-width: 768px) {
+	h1 {
+		margin-top: 0;
+		font-size : 13rem;
+	}
 	.familles-flex-container { max-width: 800px; }
 	#details { margin-top: -100px; }
 }

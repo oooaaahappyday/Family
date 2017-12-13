@@ -22,7 +22,7 @@ function FamillesController($scope, $state, FamilyService, $http, $location, $sa
 		FamilyService.getMembersWithFirstname(prenom)
 		.then(function(response){
 			familles.membersWithName = response.data;
-			// Pas de prénom recherhé
+			// Pas de prénom recherché
 			if (familles.membersWithName.length == 0) {
 				return familles.message = "Nous n'avons pas de "+ prenom +" parmi nous!"
 			}
@@ -65,6 +65,7 @@ function FamillesController($scope, $state, FamilyService, $http, $location, $sa
 	};
 
 	familles.getChildren = function(id, pere, mere){
+		familles.appState	= "siblings"; // réinitialisation pour l'animation
 		familles.message = "";
 		FamilyService.getChildren(id)
 		.then(function (response) {
@@ -100,6 +101,7 @@ function FamillesController($scope, $state, FamilyService, $http, $location, $sa
 	};
 
 	familles.getParents = function(id, pere, mere){
+		familles.appState = "siblings"; // réinitialisation pour l'animation
 		familles.message = "";
 		FamilyService.getParents(pere, mere)
 		.then(function (response) {
@@ -118,7 +120,7 @@ function FamillesController($scope, $state, FamilyService, $http, $location, $sa
 					};
 					return familles.member;
 				});
-			} else {
+			} else { // exception parents supprimés de base mais toujours en référence
 				familles.message = "Pas de parents enregistrés !";
 				familles.appState	= "siblings";
 				FamilyService.getFamilyMember(id, pere, mere)

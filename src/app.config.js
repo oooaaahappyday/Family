@@ -50,20 +50,6 @@ function config($stateProvider, $locationProvider, $urlRouterProvider,$sceDelega
               }
             }
         })
-        .state({
-            name        : 'login',
-            url         : '/login',
-            templateUrl : 'src/login/login.view.html',
-            controller  : 'LoginController',
-            controllerAs: 'login'
-        })
-        .state({
-            name        : 'logout',
-            url         : '/logout',
-            templateUrl : 'src/login/login.view.html',
-            controller  : 'LogoutController',
-            controllerAs: 'logout'
-        })
 
     // Si aucune route n'est atteinte, on charge par defaut celle-ci
     $urlRouterProvider.otherwise('/')

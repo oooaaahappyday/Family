@@ -1,7 +1,6 @@
 function MemberController($scope,$stateParams, $state, FamilyService, Upload, $timeout, $sanitize, member) {
 
 	var memberID = ($stateParams.memberID) ? parseInt($stateParams.memberID) : 0;
-  // $rootScope.title = (memberID > 0) ? 'Edit Member' : 'Add Member';
   $scope.buttonText = (memberID > 0) ? 'Update Member' : 'Add New Member';
   var original = {};
   original._id = memberID;

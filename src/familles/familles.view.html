@@ -3,11 +3,10 @@
 	<div class="familles-flex-container">
 		<div id="form" class="familles-flex-item-fixed">
 			<form ng-show="formVisible" name="nameForm" novalidate ng-submit="nameForm.$valid && familles.memberList()">
-			  <div class="form-group">
-			    <label for="first-name">Recherche par prénom : </label>
-			    <input type="text" ng-model="familles.member.prenom" class="form-control" id="first-name" aria-describedby="first-name" placeholder="Entrez un prénom" autocomplete="off" >
-			    <!-- <small id="first-nameHelp" class="form-text">Le vôtre ou celui d'un membre de la famille.</small> -->
-			  </div>
+				<div class="form-group">
+					<label for="first-name">Recherche par prénom : </label>
+					<input type="text" ng-model="familles.member.prenom" class="form-control" id="first-name" aria-describedby="first-name" placeholder="Entrez un prénom" autocomplete="off" >
+				</div>
 			  <input ng-click="familles.memberList()" type="submit" value="Go !" class="button-search"></input>
 			</form>
 		</div>
@@ -16,9 +15,10 @@
 		<div class="message-container familles-flex-item-fixed">
 			<p ng-bind="familles.message"></p>
 		</div>
-		<!-- Affichage liste des personnes trouvées -->
+
+		<!-- Affichage liste des personnes trouvées avec ce prénom-->
 		<section class="member-list-container familles-flex-item-fixed" ng-repeat="member in familles.membersWithName">
-			<div ng-click="familles.getMember(member.id,member.pere, member.mere)" class="sibling" ng-cloak>
+			<div class="sibling" ng-click="familles.getMember(member.id,member.pere, member.mere)" ng-cloak>
 				<div class="user-item">
 					<div class="folder"></div>
 					<p class="capitalize name">{{ member.prenom }} {{ member.nom }}</p>
@@ -36,6 +36,7 @@
 						</div>
 							<!-- Fleches navigation parents/enfants -->
 						<span class="parents-arrow" ng-click="familles.getParents(sibling.id, sibling.pere, sibling.mere)"> Parents <i class="fa fa-chevron-circle-left" aria-hidden="true"></i></span>
+
 						<span class="children-arrow" ng-click="familles.getChildren(sibling.id, sibling.pere, sibling.mere)"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Enfants </span>
 					</div>
 				</div>
@@ -50,6 +51,7 @@
 						</div>
 							<!-- Fleches navigation parents/enfants -->
 						<span class="parents-arrow" ng-click="familles.getParents(parent.id, parent.pere, parent.mere)"> Parents <i class="fa fa-chevron-circle-left" aria-hidden="true"></i></span>
+
 						<span class="children-arrow" ng-click="familles.getChildren(parent.id, parent.pere, parent.mere)"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Enfants </span>
 					</div>
 				</div>
@@ -64,6 +66,7 @@
 						</div>
 							<!-- Fleches navigation children/enfants -->
 						<span class="parents-arrow" ng-click="familles.getParents(child.id, child.pere, child.mere)"> Parents <i class="fa fa-chevron-circle-left" aria-hidden="true"></i></span>
+
 						<span class="children-arrow" ng-click="familles.getChildren(child.id, child.pere, child.mere)"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Enfants </span>
 					</div>
 				</div>
@@ -121,6 +124,6 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section><!-- fin section panels -->
 	</div>
 </div>
