@@ -6,7 +6,7 @@ function FamillesController($scope, $state, FamilyService, $http, $location, $sa
 	String.prototype.ucfirst = function() {
 	    return this.charAt(0).toUpperCase() + this.substr(1);
 	}
-
+	// Initialisation
 	familles.appState				 = "";
 	familles.message         = "";
 	familles.membersWithName = {};// liste member avec prénom recherché
@@ -54,7 +54,7 @@ function FamillesController($scope, $state, FamilyService, $http, $location, $sa
 		} else { // infos membre
 			FamilyService.getFamilyMember(id, pere, mere)
 			.then(function (response) {
-				familles.member= {
+				familles.member= { // répartitions des individus selon leur liens de parenté
 					'siblings': response.data[0],
 					'children': response.data[1],
 					'parents' : response.data[2]
@@ -73,7 +73,8 @@ function FamillesController($scope, $state, FamilyService, $http, $location, $sa
 			if (familles.children.length > 0) { // Au moins 1 enfant
 				familles.appState	= "children";
 				return familles.children;
-			} else if (id && (!pere || !mere)) { // pas d'enfants et pas de parents enregistrés
+			// récupération de données à afficher en cas d'absence d'enfants
+			} else if (id && (!pere || !mere)) { //exemple conjoint sans enfants et parents enregistrés
 				familles.message = "Pas de parents enregistrés !";
 				familles.appState = "siblings";
 				FamilyService.getDetailsNoParents(id)

@@ -7,6 +7,7 @@ function MemberController($scope,$stateParams, $state, FamilyService, Upload, $t
   $scope.member = angular.copy(original);
   $scope.member._id = memberID;
 
+  // récupère les membres par sexe
   $scope.getGenres = function(){
   	FamilyService.getGenres()
   	.then(function (response){
@@ -39,25 +40,25 @@ function MemberController($scope,$stateParams, $state, FamilyService, Upload, $t
   console.log($scope.myMember);
 
   console.log(myMember);
-    // $state.go('familles');
+    $state.go('familles');
     console.log(member);
     if (memberID <= 0) {
-      //   file.upload = Upload.upload({
-    		//   url: 'http://www.mokih.fr/family-server/img',
-    		//   data: {file: file}
-    		// });
-    		// file.upload
-    		// .then(function (response) {
-    	 //  	$timeout(function () {
-    	 //    	file.result = response.data;
-    		//   });
-    		// }, function (response) {
-    		//   if (response.status > 0)
-    	 //  	  $scope.errorMsg = response.status + ': ' + response.data;
-    		// }, function (evt) {
-    		//   // Math.min is to fix IE which reports 200% sometimes
-    	 //  	file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-    		// });
+        file.upload = Upload.upload({
+    		  url: 'http://www.mokih.fr/family-server/img',
+    		  data: {file: file}
+    		});
+    		file.upload
+    		.then(function (response) {
+    	  	$timeout(function () {
+    	    	file.result = response.data;
+    		  });
+    		}, function (response) {
+    		  if (response.status > 0)
+    	  	  $scope.errorMsg = response.status + ': ' + response.data;
+    		}, function (evt) {
+    		  // Math.min is to fix IE which reports 200% sometimes
+    	  	file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+    		});
     		// FamilyService.createMember(photo, prenom, nom, date, email, tel, adresse, pere, mere, conjoint, genre)
     		FamilyService.insertMember(myMember)
 
